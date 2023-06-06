@@ -2,36 +2,57 @@ import React, { useRef } from 'react'
 import { TodoItem } from './TodoItem'
 import { addTodo,Clear} from './Redux/Action';
 import {useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
 
 const Todo = () => {
   const values=useRef("");
+  const des=useRef('');
   const dispatch=useDispatch();
-  const [error,seterr]=useState("");
   const list=useSelector((e)=>e.Reducer.list);
-  function dis() {
-    if(values.current.value.length>5){
-    dispatch(addTodo(values.current.value));values.current.value="";seterr("");
+  function dis(e) {
+    e.preventDefault()
+    dispatch(addTodo(values.current.value,des.current.value));
+    des.current.value="";
+    values.current.value="";
     }
-    else seterr("please enter more than 5 char");
-  }
+  
   return (
-    <>    <h1 >Todo App <span className="badge bg-danger mb-3">made by rajendra</span></h1>
-    <div className="input-group mb-3">
-  <input type="text" className="form-control" 
-  placeholder="type your message here" ref={values}  onKeyPress={(e)=>{
-    if(e.key==="Enter")
-      dis()
-    }}/>
-  <button className="btn btn-outline-secondary" type="button" id="button-addon2" 
-  onClick={dis} >add item</button>
-</div>
+    <>
+    <div className='header'>   
+   <h4 >Todo List web app</h4>
+     
+     <button className='btn btn-dark rounded-circle'>{list.length}</button>
+   </div>
+    <div className='grid'>
+      
+    <form className="form" onSubmit={dis}>
+
+  <input type="text"  required
+  placeholder="title" ref={values} 
+    />
+    <textarea rows={10} cols={35} placeholder='description' required
+    ref={des}
+    />
+    
+  <button className="btn btn-success " type="submit" id="button-addon2" 
+  >Save</button>
+</form>
+
+    <div className='output'>
+        
+        <div className='heading'>
+        <b>Done</b>
+        <b>title</b>
+        <b>description</b>
+        <b>Delete</b>
+        </div>
+    <hr className='hr'/>
     <TodoItem/>
-    <p className='bg-success'>{error}</p>
     { list.length!==0?
     <button className="btn bg-warning" type="button" id="button-addon2"
-    onClick={()=>dispatch(Clear(values))} >clear all</button>
+    onClick={()=>dispatch(Clear(values))} >Clear All</button>
       :null}
+      </div>
+      </div>
     </>
   )
 }

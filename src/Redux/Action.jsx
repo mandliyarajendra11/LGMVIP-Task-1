@@ -1,10 +1,11 @@
 var count=0;
-export function addTodo(data){
+export function addTodo(data,des){
     return {
         type : "add",
         payload:{
             id:count++,
-            data:data
+            data:data,
+            des:des
         }
     }
 }

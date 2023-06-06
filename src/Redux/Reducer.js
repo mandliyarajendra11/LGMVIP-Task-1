@@ -5,14 +5,15 @@ export const Reducer=(state=initialData,action)=>{
 switch(action.type)
 {
     case "add":
-    const {id,data}=action.payload;
+    const {id,data,des}=action.payload;
     return {
         ...state,
         list:[
             ...state.list,
             {
                 id:id,
-                data:data
+                title:data,
+                des:des
         }
         ]
     }
