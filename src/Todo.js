@@ -29,7 +29,7 @@ const Todo = () => {
   <input type="text"  required
   placeholder="title" ref={values} 
     />
-    <textarea rows={10} cols={35} placeholder='description' required
+    <textarea rows={10} cols={315} placeholder='description' required
     ref={des}
     />
     

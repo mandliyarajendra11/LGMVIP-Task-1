@@ -17,7 +17,7 @@ padding: 0 5rem;
   background: url('/public/todo.jpg') no-repeat;
   background-size: cover;  
   grid-template-columns: 22vw 60vw;
-  padding:3rem 7rem;
+  padding:3rem 7rem; 
   column-gap: 3rem;
 }
 .form{
@@ -43,9 +43,9 @@ padding: 0 5rem;
 }
 .heading{
   display: grid;
-  grid-template-columns: 5% 20% 40% 5%;
+  grid-template-columns: 7% 20% 40% 7%;
   color: #fff;
-  column-gap: 5rem;
+  column-gap: 3rem;
   text-transform: capitalize;
   padding: 0 1rem;
 }
@@ -54,8 +54,25 @@ padding: 0 5rem;
 }
 .list{
   display: grid;
-  grid-template-columns: 5% 20% 40% 5%;
+  grid-template-columns: 7% 20% 40% 7%;
   background-color: #fff;
   padding: 1rem;
-  gap: 5rem;
+  gap: 3rem;
+}
+@media(max-width:968px){
+ .grid{
+  grid-template-columns:80%;
+  padding: 2rem ;
+  justify-content: center;
+}
+.heading{
+  column-gap: 2rem;
+}
+.list{
+  gap: 2rem;
+}
+html{
+  font-size: 62%;
+}
+
 }
